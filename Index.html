@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application - Victorias Carehome</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+        
+        :root {
+            --primary-color: #4A90E2; /* Professional Blue */
+            --secondary-color: #F4F7F6; /* Light Grey Background */
+            --text-color: #333;
+            --border-color: #DDE3E6;
+            --success-color: #50C878; /* Soft Green */
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--secondary-color);
+            margin: 0;
+            padding: 20px;
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+        }
+
+        .form-header h1 {
+            color: var(--primary-color);
+            margin: 0;
+            font-size: 28px;
+        }
+
+        .form-header p {
+            margin: 5px 0 0;
+            color: #777;
+            font-size: 16px;
+        }
+
+        .form-section {
+            margin-bottom: 25px;
+        }
+
+        .form-section h2 {
+            font-size: 18px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 16px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .checkbox-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary-color);
+        }
+
+        .file-upload-wrapper {
+            border: 2px dashed var(--border-color);
+            border-radius: 6px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        .file-upload-wrapper:hover {
+            background-color: #f9f9f9;
+            border-color: var(--primary-color);
+        }
+        .file-upload-wrapper input[type="file"] {
+            display: none;
+        }
+        .file-upload-wrapper label {
+            cursor: pointer;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        #fileName {
+            margin-top: 10px;
+            font-style: italic;
+            color: #555;
+        }
+        
+        button[type="submit"] {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #3a7bc8;
+            transform: translateY(-2px);
+        }
+        
+        #confirmationMessage {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 12px;
+            color: #999;
+        }
+
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .form-container {
+                padding: 20px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <div class="form-header">
+            <h1>Victorias Carehome</h1>
+            <p>Caregiver Application Form</p>
+        </div>
+
+        <form id="applicationForm" action="YOUR_FORMSPREE_ENDPOINT" method="POST" enctype="multipart/form-data">
+            
+            <div class="form-section">
+                <h2>Personal Information</h2>
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="e.g., Jane Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Full Address</label>
+                    <input type="text" id="address" name="address" placeholder="e.g., 123 Main St, Anytown, USA" required>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>Contact Details</h2>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="e.g., your.email@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="e.g., (555) 123-4567" required>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h2>Availability & Position</h2>
+                <div class="form-group">
+                    <label for="positionType">Position Type</label>
+                    <select id="positionType" name="positionType">
+                        <option value="Full-time">Full-time</option>
+                        <option value="Part-time">Part-time</option>
+                    </select>
+                </div>
+                 <div class="form-group">
+                    <label for="availability">Please describe your weekly availability (days/hours)</label>
+                    <textarea id="availability" name="availability" placeholder="e.g., Monday-Friday, 8am-4pm; Available weekends..." required></textarea>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>Experience & Qualifications</h2>
+                <div class="form-group">
+                    <label>Do you have previous experience in elderly care?</label>
+                     <div class="checkbox-group">
+                        <label class="checkbox-item"><input type="radio" name="experience" value="Yes" required> Yes</label>
+                        <label class="checkbox-item"><input type="radio" name="experience" value="No"> No</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Please list your relevant certifications:</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item"><input type="checkbox" name="certifications[]" value="CPR Certified"> CPR Certified</label>
+                        <label class="checkbox-item"><input type="checkbox" name="certifications[]" value="First Aid Certified"> First Aid Certified</label>
+                        <label class="checkbox-item"><input type="checkbox" name="certifications[]" value="Other"> Other (please specify below)</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="whyFit">Why are you a good fit for this role? (Briefly describe your experience and passion for caregiving)</label>
+                    <textarea id="whyFit" name="whyFit" placeholder="Tell us about yourself and what makes you a great caregiver." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Upload Resume and/or Certifications</label>
+                    <div class="file-upload-wrapper" onclick="document.getElementById('resumeUpload').click()">
+                        <input type="file" id="resumeUpload" name="resumeUpload" accept=".pdf,.doc,.docx,.jpg,.png">
+                        <label for="resumeUpload">Click here to choose a file</label>
+                        <div id="fileName">No file selected</div>
+                    </div>
+                </div>
+            </div>
+            
+            <button type="submit">Submit Application</button>
+
+        </form>
+        
+        <div id="confirmationMessage">
+            Thank you! Your application for Victorias Carehome has been successfully submitted. We will be in touch shortly.
+        </div>
+
+        <footer>
+            Built with <a href='https://fluentra-ai.lovable.app' target='_blank'>Fluentra AI</a>
+        </footer>
+    </div>
+    
+    <script>
+        const form = document.getElementById('applicationForm');
+        const confirmationMessage = document.getElementById('confirmationMessage');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent default form submission
+            
+            const formData = new FormData(form);
+            const action = form.getAttribute('action');
+
+            // Show a "sending" state on the button
+            const submitButton = form.querySelector('button[type="submit"]');
+            submitButton.textContent = 'Submitting...';
+            submitButton.disabled = true;
+
+            fetch(action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    form.style.display = 'none'; // Hide the form
+                    confirmationMessage.style.display = 'block'; // Show success message
+                } else {
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            alert(data["errors"].map(error => error["message"]).join(", "));
+                        } else {
+                            alert('Oops! There was a problem submitting your form.');
+                        }
+                    });
+                }
+            }).catch(error => {
+                 alert('Oops! There was a problem submitting your form.');
+            }).finally(() => {
+                // Restore button state in case of error
+                submitButton.textContent = 'Submit Application';
+                submitButton.disabled = false;
+            });
+        });
+
+        // Update file name display
+        const fileInput = document.getElementById('resumeUpload');
+        const fileNameDisplay = document.getElementById('fileName');
+        fileInput.addEventListener('change', function() {
+            if (fileInput.files.length > 0) {
+                fileNameDisplay.textContent = fileInput.files[0].name;
+            } else {
+                fileNameDisplay.textContent = 'No file selected';
+            }
+        });
+    </script>
+</body>
+</html>
