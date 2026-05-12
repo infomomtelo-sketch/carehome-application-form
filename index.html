@@ -8,8 +8,8 @@
         @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
         
         :root {
-            --primary-color: #4A90E2; /* Professional Blue */
-            --secondary-color: #F4F7F6; /* Light Grey Background */
+            --primary-color: #4A90E2; 
+            --secondary-color: #F4F7F6;
             --text-color: #333;
             --border-color: #DDE3E6;
         }
@@ -36,53 +36,15 @@
             box-sizing: border-box;
         }
 
-        .form-header {
-            text-align: center;
-            margin-bottom: 30px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 20px;
-        }
+        .form-header { text-align: center; margin-bottom: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 20px; }
+        .form-header h1 { color: var(--primary-color); margin: 0; font-size: 28px; }
+        .form-header p { margin: 5px 0 0; color: #777; font-size: 16px; }
+        .form-section { margin-bottom: 25px; }
+        h2 { font-size: 18px; color: var(--primary-color); margin-bottom: 15px; border-left: 4px solid var(--primary-color); padding-left: 10px; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: 700; font-size: 14px; }
 
-        .form-header h1 {
-            color: var(--primary-color);
-            margin: 0;
-            font-size: 28px;
-        }
-
-        .form-header p {
-            margin: 5px 0 0;
-            color: #777;
-            font-size: 16px;
-        }
-
-        .form-section {
-            margin-bottom: 25px;
-        }
-
-        h2 {
-            font-size: 18px;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            border-left: 4px solid var(--primary-color);
-            padding-left: 10px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 700;
-            font-size: 14px;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        input[type="tel"],
-        textarea,
-        select {
+        input[type="text"], input[type="email"], input[type="tel"], textarea, select {
             width: 100%;
             padding: 12px;
             border: 1px solid var(--border-color);
@@ -91,30 +53,19 @@
             font-size: 16px;
             transition: border-color 0.3s, box-shadow 0.3s;
         }
-
         input:focus, textarea:focus, select:focus {
             outline: none;
             border-color: var(--primary-color);
             box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
         }
-
         textarea { min-height: 120px; resize: vertical; }
-
         .checkbox-group { display: flex; gap: 20px; flex-wrap: wrap; }
         .checkbox-item { display: flex; align-items: center; gap: 8px; }
         input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--primary-color); }
-
-        .file-upload-wrapper {
-            border: 2px dashed var(--border-color);
-            border-radius: 6px;
-            padding: 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: background-color 0.3s, border-color 0.3s;
-        }
+        .file-upload-wrapper { border: 2px dashed var(--border-color); border-radius: 6px; padding: 20px; text-align: center; cursor: pointer; transition: background-color 0.3s, border-color 0.3s; }
         .file-upload-wrapper:hover { background-color: #f9f9f9; border-color: var(--primary-color); }
         .file-upload-wrapper input[type="file"] { display: none; }
-        .file-upload-wrapper label { cursor: pointer; color: var(--primary-color); font-weight: 700; }
+        .file-upload-wrapper label { cursor: pointer; color: var(--primary-color); font-weight: 700; margin-bottom: 0;}
         #fileName { margin-top: 10px; font-style: italic; color: #555; }
         
         button[type="submit"] {
@@ -129,35 +80,23 @@
             cursor: pointer;
             transition: background-color 0.3s, transform 0.2s;
         }
-
         button[type="submit"]:hover { background-color: #3a7bc8; transform: translateY(-2px); }
+        button:disabled { background-color: #a9cce3; cursor: not-allowed; }
         
-        #confirmationMessage {
-            display: none;
-            text-align: center;
-            padding: 20px;
-            margin-top: 20px;
-            border-radius: 8px;
-            background-color: #e8f5e9;
-            color: #2e7d32;
-            font-weight: bold;
-        }
-
+        #confirmationMessage { display: none; text-align: center; padding: 20px; margin-top: 20px; border-radius: 8px; background-color: #e8f5e9; color: #2e7d32; font-weight: bold; }
         footer { text-align: center; margin-top: 30px; font-size: 12px; color: #999; }
         footer a { color: var(--primary-color); text-decoration: none; }
         footer a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
-
     <div class="form-container">
         <div class="form-header">
             <h1>Victorias Carehome</h1>
             <p>Caregiver Application Form</p>
         </div>
 
-        <form id="applicationForm" action="https://formspree.io/f/xlgaoaya" method="POST" enctype="multipart/form-data">
-            
+        <form id="applicationForm" action="https://formspree.io/f/mjgllgpr" method="POST" enctype="multipart/form-data">
             <div class="form-section">
                 <h2>Personal Information</h2>
                 <div class="form-group"><label for="fullName">Full Name</label><input type="text" id="fullName" name="fullName" placeholder="e.g., Jane Doe" required></div>
@@ -171,16 +110,22 @@
             <div class="form-section">
                 <h2>Availability & Position</h2>
                 <div class="form-group"><label for="positionType">Position Type</label><select id="positionType" name="positionType"><option value="Full-time">Full-time</option><option value="Part-time">Part-time</option></select></div>
-                <div class="form-group"><label for="availability">Please describe your weekly availability (days/hours)</label><textarea id="availability" name="availability" placeholder="e.g., Monday-Friday, 8am-4pm; Available weekends..." required></textarea></div>
+                <div class="form-group"><label for="availability">Please describe your weekly availability</label><textarea id="availability" name="availability" placeholder="e.g., Monday-Friday, 8am-4pm; Available weekends..." required></textarea></div>
             </div>
             <div class="form-section">
                 <h2>Experience & Qualifications</h2>
-                <div class="form-group"><label>Do you have previous experience in elderly care?</label><div class="checkbox-group"><label class="checkbox-item"><input type="radio" name="experience" value="Yes" required> Yes</label><label class="checkbox-item"><input type="radio" name="experience" value="No"> No</label></div></div>
-                <div class="form-group"><label>Please list your relevant certifications:</label><div class="checkbox-group"><label class="checkbox-item"><input type="checkbox" name="certifications[]" value="CPR Certified"> CPR Certified</label><label class="checkbox-item"><input type="checkbox" name="certifications[]" value="First Aid Certified"> First Aid Certified</label><label class="checkbox-item"><input type="checkbox" name="certifications[]" value="Other"> Other (please specify below)</label></div></div>
+                <div class="form-group"><label>Previous experience in elderly care?</label><div class="checkbox-group"><label class="checkbox-item"><input type="radio" name="experience" value="Yes" required> Yes</label><label class="checkbox-item"><input type="radio" name="experience" value="No"> No</label></div></div>
+                <div class="form-group"><label>Certifications:</label><div class="checkbox-group"><label class="checkbox-item"><input type="checkbox" name="certifications[]" value="CPR Certified"> CPR</label><label class="checkbox-item"><input type="checkbox" name="certifications[]" value="First Aid Certified"> First Aid</label><label class="checkbox-item"><input type="checkbox" name="certifications[]" value="Other"> Other</label></div></div>
                 <div class="form-group"><label for="whyFit">Why are you a good fit for this role?</label><textarea id="whyFit" name="whyFit" placeholder="Tell us about yourself and what makes you a great caregiver." required></textarea></div>
-                <div class="form-group"><label>Upload Resume and/or Certifications</label><div class="file-upload-wrapper" onclick="document.getElementById('upload').click()"><input type="file" id="upload" name="upload" accept=".pdf,.doc,.docx,.jpg,.png"><label for="upload">Click here to choose a file</label><div id="fileName">No file selected</div></div></div>
+                <div class="form-group">
+                    <label>Upload Resume or Certifications</label>
+                    <div class="file-upload-wrapper" onclick="document.getElementById('upload').click()">
+                        <input type="file" id="upload" name="upload" accept=".pdf,.doc,.docx,.jpg,.png">
+                        <label for="upload">Click here to choose a file</label>
+                        <div id="fileName">No file selected</div>
+                    </div>
+                </div>
             </div>
-            
             <button type="submit">Submit Application</button>
         </form>
         
@@ -210,10 +155,10 @@
                     confirmationMessage.style.display = 'block';
                 } else {
                     response.json().then(data => {
-                        if (Object.hasOwn(data, 'errors')) {
-                           alert(data["errors"].map(error => error["message"]).join(", "));
+                        if (data.errors) {
+                           alert(data.errors.map(error => error.message).join(", "));
                         } else {
-                           alert('There was a problem. Please check your details and try again.');
+                           alert('There was a problem submitting your form. Please check details and try again.');
                         }
                     }).finally(() => {
                         submitButton.textContent = 'Submit Application';
