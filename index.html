@@ -12,7 +12,6 @@
             --secondary-color: #F4F7F6; /* Light Grey Background */
             --text-color: #333;
             --border-color: #DDE3E6;
-            --success-color: #50C878; /* Soft Green */
         }
 
         body {
@@ -60,7 +59,7 @@
             margin-bottom: 25px;
         }
 
-        .form-section h2 {
+        h2 {
             font-size: 18px;
             color: var(--primary-color);
             margin-bottom: 15px;
@@ -93,38 +92,17 @@
             transition: border-color 0.3s, box-shadow 0.3s;
         }
 
-        input[type="text"]:focus,
-        input[type="email"]:focus,
-        input[type="tel"]:focus,
-        textarea:focus,
-        select:focus {
+        input:focus, textarea:focus, select:focus {
             outline: none;
             border-color: var(--primary-color);
             box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
         }
 
-        textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
+        textarea { min-height: 120px; resize: vertical; }
 
-        .checkbox-group {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .checkbox-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            accent-color: var(--primary-color);
-        }
+        .checkbox-group { display: flex; gap: 20px; flex-wrap: wrap; }
+        .checkbox-item { display: flex; align-items: center; gap: 8px; }
+        input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--primary-color); }
 
         .file-upload-wrapper {
             border: 2px dashed var(--border-color);
@@ -134,23 +112,10 @@
             cursor: pointer;
             transition: background-color 0.3s, border-color 0.3s;
         }
-        .file-upload-wrapper:hover {
-            background-color: #f9f9f9;
-            border-color: var(--primary-color);
-        }
-        .file-upload-wrapper input[type="file"] {
-            display: none;
-        }
-        .file-upload-wrapper label {
-            cursor: pointer;
-            color: var(--primary-color);
-            font-weight: 700;
-        }
-        #fileName {
-            margin-top: 10px;
-            font-style: italic;
-            color: #555;
-        }
+        .file-upload-wrapper:hover { background-color: #f9f9f9; border-color: var(--primary-color); }
+        .file-upload-wrapper input[type="file"] { display: none; }
+        .file-upload-wrapper label { cursor: pointer; color: var(--primary-color); font-weight: 700; }
+        #fileName { margin-top: 10px; font-style: italic; color: #555; }
         
         button[type="submit"] {
             width: 100%;
@@ -165,10 +130,7 @@
             transition: background-color 0.3s, transform 0.2s;
         }
 
-        button[type="submit"]:hover {
-            background-color: #3a7bc8;
-            transform: translateY(-2px);
-        }
+        button[type="submit"]:hover { background-color: #3a7bc8; transform: translateY(-2px); }
         
         #confirmationMessage {
             display: none;
@@ -181,31 +143,9 @@
             font-weight: bold;
         }
 
-        footer {
-            text-align: center;
-            margin-top: 30px;
-            font-size: 12px;
-            color: #999;
-        }
-
-        footer a {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-        
-        @media (max-width: 600px) {
-            body {
-                padding: 10px;
-            }
-            .form-container {
-                padding: 20px;
-            }
-        }
-
+        footer { text-align: center; margin-top: 30px; font-size: 12px; color: #999; }
+        footer a { color: var(--primary-color); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -216,143 +156,81 @@
             <p>Caregiver Application Form</p>
         </div>
 
-        <form id="applicationForm" action="YOUR_FORMSPREE_ENDPOINT" method="POST" enctype="multipart/form-data">
+        <form id="applicationForm" action="https://formspree.io/f/xlgaoaya" method="POST" enctype="multipart/form-data">
             
             <div class="form-section">
                 <h2>Personal Information</h2>
-                <div class="form-group">
-                    <label for="fullName">Full Name</label>
-                    <input type="text" id="fullName" name="fullName" placeholder="e.g., Jane Doe" required>
-                </div>
-                <div class="form-group">
-                    <label for="address">Full Address</label>
-                    <input type="text" id="address" name="address" placeholder="e.g., 123 Main St, Anytown, USA" required>
-                </div>
+                <div class="form-group"><label for="fullName">Full Name</label><input type="text" id="fullName" name="fullName" placeholder="e.g., Jane Doe" required></div>
+                <div class="form-group"><label for="address">Full Address</label><input type="text" id="address" name="address" placeholder="e.g., 123 Main St, Anytown, USA" required></div>
             </div>
-
             <div class="form-section">
                 <h2>Contact Details</h2>
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" placeholder="e.g., your.email@example.com" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" placeholder="e.g., (555) 123-4567" required>
-                </div>
+                <div class="form-group"><label for="email">Email Address</label><input type="email" id="email" name="email" placeholder="e.g., your.email@example.com" required></div>
+                <div class="form-group"><label for="phone">Phone Number</label><input type="tel" id="phone" name="phone" placeholder="e.g., (555) 123-4567" required></div>
             </div>
-            
             <div class="form-section">
                 <h2>Availability & Position</h2>
-                <div class="form-group">
-                    <label for="positionType">Position Type</label>
-                    <select id="positionType" name="positionType">
-                        <option value="Full-time">Full-time</option>
-                        <option value="Part-time">Part-time</option>
-                    </select>
-                </div>
-                 <div class="form-group">
-                    <label for="availability">Please describe your weekly availability (days/hours)</label>
-                    <textarea id="availability" name="availability" placeholder="e.g., Monday-Friday, 8am-4pm; Available weekends..." required></textarea>
-                </div>
+                <div class="form-group"><label for="positionType">Position Type</label><select id="positionType" name="positionType"><option value="Full-time">Full-time</option><option value="Part-time">Part-time</option></select></div>
+                <div class="form-group"><label for="availability">Please describe your weekly availability (days/hours)</label><textarea id="availability" name="availability" placeholder="e.g., Monday-Friday, 8am-4pm; Available weekends..." required></textarea></div>
             </div>
-
             <div class="form-section">
                 <h2>Experience & Qualifications</h2>
-                <div class="form-group">
-                    <label>Do you have previous experience in elderly care?</label>
-                     <div class="checkbox-group">
-                        <label class="checkbox-item"><input type="radio" name="experience" value="Yes" required> Yes</label>
-                        <label class="checkbox-item"><input type="radio" name="experience" value="No"> No</label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>Please list your relevant certifications:</label>
-                    <div class="checkbox-group">
-                        <label class="checkbox-item"><input type="checkbox" name="certifications[]" value="CPR Certified"> CPR Certified</label>
-                        <label class="checkbox-item"><input type="checkbox" name="certifications[]" value="First Aid Certified"> First Aid Certified</label>
-                        <label class="checkbox-item"><input type="checkbox" name="certifications[]" value="Other"> Other (please specify below)</label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="whyFit">Why are you a good fit for this role? (Briefly describe your experience and passion for caregiving)</label>
-                    <textarea id="whyFit" name="whyFit" placeholder="Tell us about yourself and what makes you a great caregiver." required></textarea>
-                </div>
-                <div class="form-group">
-                    <label>Upload Resume and/or Certifications</label>
-                    <div class="file-upload-wrapper" onclick="document.getElementById('resumeUpload').click()">
-                        <input type="file" id="resumeUpload" name="resumeUpload" accept=".pdf,.doc,.docx,.jpg,.png">
-                        <label for="resumeUpload">Click here to choose a file</label>
-                        <div id="fileName">No file selected</div>
-                    </div>
-                </div>
+                <div class="form-group"><label>Do you have previous experience in elderly care?</label><div class="checkbox-group"><label class="checkbox-item"><input type="radio" name="experience" value="Yes" required> Yes</label><label class="checkbox-item"><input type="radio" name="experience" value="No"> No</label></div></div>
+                <div class="form-group"><label>Please list your relevant certifications:</label><div class="checkbox-group"><label class="checkbox-item"><input type="checkbox" name="certifications[]" value="CPR Certified"> CPR Certified</label><label class="checkbox-item"><input type="checkbox" name="certifications[]" value="First Aid Certified"> First Aid Certified</label><label class="checkbox-item"><input type="checkbox" name="certifications[]" value="Other"> Other (please specify below)</label></div></div>
+                <div class="form-group"><label for="whyFit">Why are you a good fit for this role?</label><textarea id="whyFit" name="whyFit" placeholder="Tell us about yourself and what makes you a great caregiver." required></textarea></div>
+                <div class="form-group"><label>Upload Resume and/or Certifications</label><div class="file-upload-wrapper" onclick="document.getElementById('upload').click()"><input type="file" id="upload" name="upload" accept=".pdf,.doc,.docx,.jpg,.png"><label for="upload">Click here to choose a file</label><div id="fileName">No file selected</div></div></div>
             </div>
             
             <button type="submit">Submit Application</button>
-
         </form>
         
-        <div id="confirmationMessage">
-            Thank you! Your application for Victorias Carehome has been successfully submitted. We will be in touch shortly.
-        </div>
-
-        <footer>
-            Built with <a href='https://fluentra-ai.lovable.app' target='_blank'>Fluentra AI</a>
-        </footer>
+        <div id="confirmationMessage">Thank you! Your application for Victorias Carehome has been successfully submitted. We will be in touch shortly.</div>
+        <footer>Built with <a href='https://fluentra-ai.lovable.app' target='_blank'>Fluentra AI</a></footer>
     </div>
     
     <script>
         const form = document.getElementById('applicationForm');
         const confirmationMessage = document.getElementById('confirmationMessage');
+        const submitButton = form.querySelector('button[type="submit"]');
 
         form.addEventListener('submit', function(e) {
-            e.preventDefault(); // Prevent default form submission
-            
-            const formData = new FormData(form);
+            e.preventDefault();
             const action = form.getAttribute('action');
-
-            // Show a "sending" state on the button
-            const submitButton = form.querySelector('button[type="submit"]');
+            const formData = new FormData(form);
             submitButton.textContent = 'Submitting...';
             submitButton.disabled = true;
 
             fetch(action, {
                 method: 'POST',
                 body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
+                headers: { 'Accept': 'application/json' }
             }).then(response => {
                 if (response.ok) {
-                    form.style.display = 'none'; // Hide the form
-                    confirmationMessage.style.display = 'block'; // Show success message
+                    form.style.display = 'none';
+                    confirmationMessage.style.display = 'block';
                 } else {
                     response.json().then(data => {
                         if (Object.hasOwn(data, 'errors')) {
-                            alert(data["errors"].map(error => error["message"]).join(", "));
+                           alert(data["errors"].map(error => error["message"]).join(", "));
                         } else {
-                            alert('Oops! There was a problem submitting your form.');
+                           alert('There was a problem. Please check your details and try again.');
                         }
+                    }).finally(() => {
+                        submitButton.textContent = 'Submit Application';
+                        submitButton.disabled = false;
                     });
                 }
             }).catch(error => {
-                 alert('Oops! There was a problem submitting your form.');
-            }).finally(() => {
-                // Restore button state in case of error
-                submitButton.textContent = 'Submit Application';
-                submitButton.disabled = false;
+                 alert('A network error occurred. Please try again later.');
+                 submitButton.textContent = 'Submit Application';
+                 submitButton.disabled = false;
             });
         });
 
-        // Update file name display
-        const fileInput = document.getElementById('resumeUpload');
+        const fileInput = document.getElementById('upload');
         const fileNameDisplay = document.getElementById('fileName');
         fileInput.addEventListener('change', function() {
-            if (fileInput.files.length > 0) {
-                fileNameDisplay.textContent = fileInput.files[0].name;
-            } else {
-                fileNameDisplay.textContent = 'No file selected';
-            }
+            fileNameDisplay.textContent = this.files.length > 0 ? this.files[0].name : 'No file selected';
         });
     </script>
 </body>
