@@ -1,182 +1,398 @@
+My apologies! It looks like my last response was cut off. Thanks for letting me know.
+
+What's next is the **complete, finished invoice.** I will now provide the full HTML file, including the interactive table, automatic calculations, and the digital signature pad we discussed.
+
+You can copy this code, save it as an `.html` file, and open it in any web browser to start using it immediately.
+
+Here is the complete fillable invoice for **EC Rental Property Management LLC**:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Application - Victorias Carehome</title>
+    <title>Interactive Invoice - EC Rental Property Management LLC</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
-        
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         :root {
-            --primary-color: #4A90E2; 
-            --secondary-color: #F4F7F6;
+            --primary-color: #0d47a1; /* Professional, deep blue */
+            --secondary-color: #f4f8ff;
+            --border-color: #d1d9e6;
             --text-color: #333;
-            --border-color: #DDE3E6;
+            --text-light: #666;
+            --white: #ffffff;
+            --danger-color: #c62828;
+            --success-color: #2e7d32;
         }
-
         body {
-            font-family: 'Lato', sans-serif;
-            background-color: var(--secondary-color);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             margin: 0;
             padding: 20px;
+            background-color: #e9eff5;
             color: var(--text-color);
+            -webkit-print-color-adjust: exact;
+        }
+        .invoice-container {
+            max-width: 900px;
+            margin: 20px auto;
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 51, 153, 0.1);
+            padding: 40px;
+        }
+        .invoice-header {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding-bottom: 30px;
+            border-bottom: 2px solid var(--primary-color);
+            margin-bottom: 30px;
+        }
+        .company-details h1 {
+            color: var(--primary-color);
+            margin: 0 0 5px 0;
+            font-size: 28px;
+            font-weight: 700;
+        }
+        .company-details p {
+            margin: 0;
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        .invoice-meta {
+            text-align: right;
+        }
+        .invoice-meta .meta-item {
+            display: flex;
             align-items: center;
-            min-height: 100vh;
+            justify-content: flex-end;
+            margin-bottom: 8px;
         }
-
-        .form-container {
-            background-color: #fff;
-            padding: 30px 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            max-width: 700px;
-            width: 100%;
-            box-sizing: border-box;
+        .invoice-meta label {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-right: 10px;
+            font-size: 14px;
         }
-
-        .form-header { text-align: center; margin-bottom: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 20px; }
-        .form-header h1 { color: var(--primary-color); margin: 0; font-size: 28px; }
-        .form-header p { margin: 5px 0 0; color: #777; font-size: 16px; }
-        .form-section { margin-bottom: 25px; }
-        h2 { font-size: 18px; color: var(--primary-color); margin-bottom: 15px; border-left: 4px solid var(--primary-color); padding-left: 10px; }
-        .form-group { margin-bottom: 20px; }
-        label { display: block; margin-bottom: 8px; font-weight: 700; font-size: 14px; }
-
-        input[type="text"], input[type="email"], input[type="tel"], textarea, select {
-            width: 100%;
-            padding: 12px;
+        input[type="text"], input[type="date"], input[type="number"], textarea {
             border: 1px solid var(--border-color);
-            border-radius: 6px;
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            width: 100%;
             box-sizing: border-box;
-            font-size: 16px;
             transition: border-color 0.3s, box-shadow 0.3s;
         }
-        input:focus, textarea:focus, select:focus {
+        input:focus, textarea:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+            box-shadow: 0 0 0 3px rgba(13, 71, 161, 0.1);
         }
-        textarea { min-height: 120px; resize: vertical; }
-        .checkbox-group { display: flex; gap: 20px; flex-wrap: wrap; }
-        .checkbox-item { display: flex; align-items: center; gap: 8px; }
-        input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--primary-color); }
-        .file-upload-wrapper { border: 2px dashed var(--border-color); border-radius: 6px; padding: 20px; text-align: center; cursor: pointer; transition: background-color 0.3s, border-color 0.3s; }
-        .file-upload-wrapper:hover { background-color: #f9f9f9; border-color: var(--primary-color); }
-        .file-upload-wrapper input[type="file"] { display: none; }
-        .file-upload-wrapper label { cursor: pointer; color: var(--primary-color); font-weight: 700; margin-bottom: 0;}
-        #fileName { margin-top: 10px; font-style: italic; color: #555; }
-        
-        button[type="submit"] {
+        .bill-to {
+            margin-bottom: 30px;
+        }
+        .bill-to h2 {
+            color: var(--primary-color);
+            font-size: 16px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+        }
+        .bill-to-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .invoice-items table {
             width: 100%;
-            padding: 15px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 18px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
+            border-collapse: collapse;
+            margin-bottom: 20px;
         }
-        button[type="submit"]:hover { background-color: #3a7bc8; transform: translateY(-2px); }
-        button:disabled { background-color: #a9cce3; cursor: not-allowed; }
-        
-        #confirmationMessage { display: none; text-align: center; padding: 20px; margin-top: 20px; border-radius: 8px; background-color: #e8f5e9; color: #2e7d32; font-weight: bold; }
-        footer { text-align: center; margin-top: 30px; font-size: 12px; color: #999; }
-        footer a { color: var(--primary-color); text-decoration: none; }
-        footer a:hover { text-decoration: underline; }
+        .invoice-items th, .invoice-items td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .invoice-items thead {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .invoice-items tbody tr:last-child td {
+            border-bottom: none;
+        }
+        .invoice-items td input {
+            padding: 8px 10px;
+            font-size: 14px;
+        }
+        th.text-right, td.text-right { text-align: right; }
+        .totals {
+            margin-left: auto;
+            width: 100%;
+            max-width: 300px;
+            margin-top: 20px;
+            text-align: right;
+        }
+        .totals-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            font-size: 15px;
+        }
+        .totals-item label { font-weight: 500; color: var(--text-light); }
+        .totals-item.grand-total {
+            font-weight: 700;
+            font-size: 20px;
+            color: var(--primary-color);
+            border-top: 2px solid var(--primary-color);
+            margin-top: 10px;
+            padding-top: 15px;
+        }
+        .signature-section {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+        }
+        .signature-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        canvas {
+            border: 2px dashed var(--border-color);
+            border-radius: 8px;
+            cursor: crosshair;
+            width: 100%;
+            height: 150px;
+            background-color: var(--secondary-color);
+            position: relative;
+        }
+        .signature-placeholder {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #aaa;
+            pointer-events: none;
+        }
+        .actions {
+            margin-top: 40px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+        }
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn-primary {
+            background-color: var(--success-color);
+            color: var(--white);
+        }
+        .btn-primary:hover { background-color: #1b5e20; }
+        .btn-secondary {
+            background-color: #6c757d;
+            color: var(--white);
+        }
+        .btn-secondary:hover { background-color: #5a6268; }
+        .btn-danger {
+            background-color: var(--danger-color);
+            color: var(--white);
+        }
+        .btn-danger:hover { background-color: #b71c1c; }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            font-size: 12px;
+            color: var(--text-light);
+            border-top: 1px solid var(--border-color);
+        }
+        .footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .disclaimer {
+            font-size: 11px;
+            font-style: italic;
+            color: #999;
+            margin-top: 15px;
+        }
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            .invoice-container { padding: 20px; }
+            .invoice-header { flex-direction: column; gap: 20px; }
+            .invoice-meta { text-align: left; width: 100%; }
+            .invoice-meta .meta-item { justify-content: flex-start; }
+            .bill-to-grid { grid-template-columns: 1fr; }
+            .actions { flex-direction: column; }
+        }
+        @media print {
+            body { background-color: var(--white); padding: 0; }
+            .invoice-container { margin: 0; box-shadow: none; border-radius: 0; padding: 20px; }
+            .actions, .footer, .btn, .disclaimer { display: none; }
+            input, textarea { border: 1px solid transparent !important; background: transparent !important; }
+            input:focus, textarea:focus { box-shadow: none !important; }
+        }
     </style>
 </head>
 <body>
-    <div class="form-container">
-        <div class="form-header">
-            <h1>Victorias Carehome</h1>
-            <p>Caregiver Application Form</p>
-        </div>
-
-        <form id="applicationForm" action="https://formspree.io/f/mjgllgpr" method="POST" enctype="multipart/form-data">
-            <div class="form-section">
-                <h2>Personal Information</h2>
-                <div class="form-group"><label for="fullName">Full Name</label><input type="text" id="fullName" name="fullName" placeholder="e.g., Jane Doe" required></div>
-                <div class="form-group"><label for="address">Full Address</label><input type="text" id="address" name="address" placeholder="e.g., 123 Main St, Anytown, USA" required></div>
+    <div class="invoice-container">
+        <header class="invoice-header">
+            <div class="company-details">
+                <h1>EC Rental Property Management LLC</h1>
+                <p>
+                    123 Main Street, Suite 456<br>
+                    Fresno, CA 93720<br>
+                    (559) 555-1234 | contact@ecrentalpm.com
+                </p>
             </div>
-            <div class="form-section">
-                <h2>Contact Details</h2>
-                <div class="form-group"><label for="email">Email Address</label><input type="email" id="email" name="email" placeholder="e.g., your.email@example.com" required></div>
-                <div class="form-group"><label for="phone">Phone Number</label><input type="tel" id="phone" name="phone" placeholder="e.g., (555) 123-4567" required></div>
-            </div>
-            <div class="form-section">
-                <h2>Availability & Position</h2>
-                <div class="form-group"><label for="positionType">Position Type</label><select id="positionType" name="positionType"><option value="Full-time">Full-time</option><option value="Part-time">Part-time</option></select></div>
-                <div class="form-group"><label for="availability">Please describe your weekly availability</label><textarea id="availability" name="availability" placeholder="e.g., Monday-Friday, 8am-4pm; Available weekends..." required></textarea></div>
-            </div>
-            <div class="form-section">
-                <h2>Experience & Qualifications</h2>
-                <div class="form-group"><label>Previous experience in elderly care?</label><div class="checkbox-group"><label class="checkbox-item"><input type="radio" name="experience" value="Yes" required> Yes</label><label class="checkbox-item"><input type="radio" name="experience" value="No"> No</label></div></div>
-                <div class="form-group"><label>Certifications:</label><div class="checkbox-group"><label class="checkbox-item"><input type="checkbox" name="certifications[]" value="CPR Certified"> CPR</label><label class="checkbox-item"><input type="checkbox" name="certifications[]" value="First Aid Certified"> First Aid</label><label class="checkbox-item"><input type="checkbox" name="certifications[]" value="Other"> Other</label></div></div>
-                <div class="form-group"><label for="whyFit">Why are you a good fit for this role?</label><textarea id="whyFit" name="whyFit" placeholder="Tell us about yourself and what makes you a great caregiver." required></textarea></div>
-                <div class="form-group">
-                    <label>Upload Resume or Certifications</label>
-                    <div class="file-upload-wrapper" onclick="document.getElementById('upload').click()">
-                        <input type="file" id="upload" name="upload" accept=".pdf,.doc,.docx,.jpg,.png">
-                        <label for="upload">Click here to choose a file</label>
-                        <div id="fileName">No file selected</div>
-                    </div>
+            <div class="invoice-meta">
+                <div class="meta-item">
+                    <label for="invoice-num">Invoice #</label>
+                    <input type="text" id="invoice-num" value="INV-001">
+                </div>
+                <div class="meta-item">
+                    <label for="invoice-date">Date</label>
+                    <input type="date" id="invoice-date">
                 </div>
             </div>
-            <button type="submit">Submit Application</button>
-        </form>
+        </header>
+
+        <section class="bill-to">
+            <h2>BILL TO</h2>
+            <div class="bill-to-grid">
+                <input type="text" placeholder="Client Name">
+                <input type="text" placeholder="Client Company (Optional)">
+                <input type="text" placeholder="Street Address">
+                <input type="text" placeholder="City, State, Zip Code">
+            </div>
+        </section>
+
+        <section class="invoice-items">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th style="width: 80px;">Qty</th>
+                        <th style="width: 120px;" class="text-right">Rate</th>
+                        <th style="width: 120px;" class="text-right">Amount</th>
+                    </tr>
+                </thead>
+                <tbody id="invoice-tbody">
+                    <tr class="item-row">
+                        <td><input type="text" value="Monthly Rent - Unit 101"></td>
+                        <td><input type="number" class="qty" value="1" oninput="calculateTotals()"></td>
+                        <td><input type="number" class="rate" value="1800.00" oninput="calculateTotals()"></td>
+                        <td class="text-right amount">$1800.00</td>
+                    </tr>
+                    <tr class="item-row">
+                        <td><input type="text" value="Maintenance - Leaky Faucet Repair"></td>
+                        <td><input type="number" class="qty" value="1.5" oninput="calculateTotals()"></td>
+                        <td><input type="number" class="rate" value="75.00" oninput="calculateTotals()"></td>
+                        <td class="text-right amount">$112.50</td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="btn btn-secondary" onclick="addRow()">+ Add Item</button>
+        </section>
+
+        <section class="totals">
+            <div class="totals-item">
+                <label>Subtotal</label>
+                <span id="subtotal">$0.00</span>
+            </div>
+            <div class="totals-item">
+                <label>Tax (<input type="number" id="tax-rate" value="0" oninput="calculateTotals()" style="width: 50px; text-align: right;">%)</label>
+                <span id="tax-amount">$0.00</span>
+            </div>
+            <div class="totals-item grand-total">
+                <label>Total</label>
+                <span id="grand-total">$0.00</span>
+            </div>
+        </section>
+
+        <section class="signature-section">
+            <h3>Client Signature</h3>
+            <div style="position: relative;">
+                <canvas id="signature-pad"></canvas>
+                <div id="signature-placeholder" class="signature-placeholder">Sign here</div>
+            </div>
+        </section>
         
-        <div id="confirmationMessage">Thank you! Your application for Victorias Carehome has been successfully submitted. We will be in touch shortly.</div>
-        <footer>Built with <a href='https://fluentra-ai.lovable.app' target='_blank'>Fluentra AI</a></footer>
+        <div class="actions">
+            <button class="btn btn-danger" onclick="clearSignature()">Clear Signature</button>
+            <button class="btn btn-primary" onclick="window.print()">Print / Save as PDF</button>
+        </div>
+
+        <footer class="footer">
+            <p>Thank you for your business!</p>
+            <p>Built with <a href='https://fluentra-ai.lovable.app'>Fluentra AI</a></p>
+            <p class="disclaimer">This document was generated by Fluentra AI for informational purposes. Consult a licensed attorney for legal advice.</p>
+        </footer>
     </div>
-    
+
     <script>
-        const form = document.getElementById('applicationForm');
-        const confirmationMessage = document.getElementById('confirmationMessage');
-        const submitButton = form.querySelector('button[type="submit"]');
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('invoice-date').valueAsDate = new Date();
+            calculateTotals();
+            initSignaturePad();
+        });
 
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const action = form.getAttribute('action');
-            const formData = new FormData(form);
-            submitButton.textContent = 'Submitting...';
-            submitButton.disabled = true;
-
-            fetch(action, {
-                method: 'POST',
-                body: formData,
-                headers: { 'Accept': 'application/json' }
-            }).then(response => {
-                if (response.ok) {
-                    form.style.display = 'none';
-                    confirmationMessage.style.display = 'block';
-                } else {
-                    response.json().then(data => {
-                        if (data.errors) {
-                           alert(data.errors.map(error => error.message).join(", "));
-                        } else {
-                           alert('There was a problem submitting your form. Please check details and try again.');
-                        }
-                    }).finally(() => {
-                        submitButton.textContent = 'Submit Application';
-                        submitButton.disabled = false;
-                    });
-                }
-            }).catch(error => {
-                 alert('A network error occurred. Please try again later.');
-                 submitButton.textContent = 'Submit Application';
-                 submitButton.disabled = false;
+        function calculateTotals() {
+            let subtotal = 0;
+            document.querySelectorAll('.item-row').forEach(row => {
+                const qty = parseFloat(row.querySelector('.qty').value) || 0;
+                const rate = parseFloat(row.querySelector('.rate').value) || 0;
+                const amount = qty * rate;
+                row.querySelector('.amount').textContent = formatCurrency(amount);
+                subtotal += amount;
             });
-        });
 
-        const fileInput = document.getElementById('upload');
-        const fileNameDisplay = document.getElementById('fileName');
-        fileInput.addEventListener('change', function() {
-            fileNameDisplay.textContent = this.files.length > 0 ? this.files[0].name : 'No file selected';
-        });
-    </script>
-</body>
-</html>
+            const taxRate = parseFloat(document.getElementById('tax-rate').value) || 0;
+            const taxAmount = subtotal * (taxRate / 100);
+            const grandTotal = subtotal + taxAmount;
+
+            document.getElementById('subtotal').textContent = formatCurrency(subtotal);
+            document.getElementById('tax-amount').textContent = formatCurrency(taxAmount);
+            document.getElementById('grand-total').textContent = formatCurrency(grandTotal);
+        }
+
+        function formatCurrency(value) {
+            return '$' + value.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+        }
+
+        function addRow() {
+            const tbody = document.getElementById('invoice-tbody');
+            const newRow = document.createElement('tr');
+            newRow.classList.add('item-row');
+            newRow.innerHTML = `
+                <td><input type="text" placeholder="Item description"></td>
+                <td><input type="number" class="qty" value="1" oninput="calculateTotals()"></td>
+                <td><input type="number" class="rate" value="0.00" oninput="calculateTotals()"></td>
+                <td class="text-right amount">$0.00</td>
+            `;
+            tbody.appendChild(newRow);
+        }
+
+        let canvas, ctx, drawing = false;
+        let hasSigned = false;
+
+        function initSignaturePad() {
+            canvas = document.getElementById('signature-pad');
+            ctx = canvas.getContext('2d');
+            const placeholder = document.getElementById('signature-placeholder');
+
+            // Set canvas size for high-DPI screens
+            const dpr = window.devicePixelRatio || 1;
+            const rect = canvas.getBoundingClientRect();
+            canvas.width
