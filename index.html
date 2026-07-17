@@ -1,537 +1,446 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invoice - EC Rental Property Management LLC</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Caregiver Application — [FACILITY NAME]</title>
+<meta name="description" content="Apply to join our caregiving team in Fresno. Takes about two minutes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16211C;
+  --ink-soft:#5A6A62;
+  --paper:#F7F8F5;
+  --card:#FFFFFF;
+  --sage:#3F6F5B;
+  --sage-deep:#2C5244;
+  --mist:#E4EDE7;
+  --line:#D9DFD9;
+  --flag:#B3541E;
+  --r:10px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font:400 16px/1.5 Inter,system-ui,-apple-system,sans-serif;
+  padding:0 0 64px;
+}
+.wrap{max-width:580px;margin:0 auto;padding:0 18px}
 
-        :root { 
-            --primary-color: #0d6efd;
-            --secondary-color: #6c757d;
-            --border-color: #dee2e6;
-            --background-color: #f8f9fa;
-            --text-color: #212529;
-            --input-bg: #fff;
-        }
+/* ---------- header ---------- */
+.masthead{
+  background:var(--sage-deep);
+  color:#fff;
+  padding:40px 0 34px;
+  margin-bottom:26px;
+}
+.eyebrow{
+  font:600 11px/1 Inter,sans-serif;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--mist);
+  opacity:.85;
+  margin-bottom:14px;
+}
+.masthead h1{
+  font:800 clamp(30px,8vw,42px)/1.05 'Bricolage Grotesque',system-ui,sans-serif;
+  letter-spacing:-.02em;
+  margin-bottom:12px;
+}
+.masthead p{font-size:15px;line-height:1.55;color:#DCE7E0;max-width:44ch}
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--background-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 20px;
-            font-size: 14px;
-        }
+/* ---------- sections ---------- */
+.sec{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--r);
+  padding:22px 18px;
+  margin-bottom:14px;
+}
+.sec > h2{
+  font:700 12px/1 Inter,sans-serif;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--sage);
+  padding-bottom:12px;
+  margin-bottom:18px;
+  border-bottom:1px solid var(--line);
+}
+.hint{font-size:13px;color:var(--ink-soft);margin:-10px 0 16px}
 
-        .invoice-container {
-            max-width: 850px;
-            margin: 20px auto;
-            background-color: #fff;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            border: 1px solid var(--border-color);
-        }
+/* ---------- fields ---------- */
+.field{margin-bottom:16px}
+.field:last-child{margin-bottom:0}
+.field > label{
+  display:block;
+  font:500 14px/1.3 Inter,sans-serif;
+  margin-bottom:6px;
+}
+.req{color:var(--flag);font-weight:600}
+.field input[type=text],
+.field input[type=tel],
+.field input[type=email],
+.field input[type=date],
+.field select,
+.field textarea{
+  width:100%;
+  min-height:50px;
+  padding:13px 12px;
+  font:400 16px/1.4 Inter,sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:8px;
+  appearance:none;
+}
+.field textarea{min-height:96px;resize:vertical}
+.field select{
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8'><path d='M1 1l5 5 5-5' fill='none' stroke='%235A6A62' stroke-width='1.6'/></svg>");
+  background-repeat:no-repeat;
+  background-position:right 14px center;
+  padding-right:36px;
+}
+.field input:focus-visible,
+.field select:focus-visible,
+.field textarea:focus-visible{
+  outline:2px solid var(--sage);
+  outline-offset:1px;
+  background:#fff;
+}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:420px){.two{grid-template-columns:1fr}}
 
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            padding-bottom: 30px;
-            border-bottom: 2px solid var(--border-color);
-            margin-bottom: 30px;
-        }
+/* ---------- chips (radio / checkbox) ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative;display:inline-flex}
+.chip input{position:absolute;inset:0;opacity:0;cursor:pointer;margin:0}
+.chip span{
+  display:flex;align-items:center;justify-content:center;
+  min-height:44px;padding:0 14px;
+  font:500 14px/1 Inter,sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:22px;
+  transition:background .12s,border-color .12s,color .12s;
+}
+.chip input:checked + span{
+  background:var(--sage);
+  border-color:var(--sage);
+  color:#fff;
+}
+.chip input:focus-visible + span{outline:2px solid var(--sage-deep);outline-offset:2px}
 
-        .company-details h1 {
-            margin: 0;
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--text-color);
-        }
-        
-        .company-details input {
-            border: none;
-            background: transparent;
-            font-size: 14px;
-            padding: 2px 5px;
-            width: 250px;
-            border-bottom: 1px dashed var(--border-color);
-        }
-        .company-details input:focus {
-             outline: none;
-             border-bottom: 1px solid var(--primary-color);
-        }
+/* ---------- availability grid (the one thing we need most) ---------- */
+.grid{
+  display:grid;
+  grid-template-columns:52px repeat(3,1fr);
+  gap:6px;
+  align-items:center;
+}
+.grid .head{
+  font:600 11px/1 Inter,sans-serif;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  text-align:center;
+  padding-bottom:2px;
+}
+.grid .day{
+  font:600 13px/1 Inter,sans-serif;
+  color:var(--ink);
+}
+.cell{position:relative;display:block}
+.cell input{position:absolute;inset:0;opacity:0;cursor:pointer;margin:0}
+.cell span{
+  display:block;height:44px;
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:7px;
+  transition:background .12s,border-color .12s;
+}
+.cell input:checked + span{background:var(--sage);border-color:var(--sage)}
+.cell input:focus-visible + span{outline:2px solid var(--sage-deep);outline-offset:2px}
+.shiftkey{
+  font-size:12px;color:var(--ink-soft);
+  margin-top:12px;line-height:1.5;
+}
 
-        .invoice-title {
-            text-align: right;
-        }
-        .invoice-title h2 {
-            margin: 0;
-            font-size: 32px;
-            color: var(--secondary-color);
-            font-weight: 600;
-        }
+/* ---------- upload ---------- */
+.drop{
+  display:block;
+  border:1.5px dashed var(--sage);
+  background:var(--mist);
+  border-radius:var(--r);
+  padding:24px 16px;
+  text-align:center;
+  cursor:pointer;
+}
+.drop input{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}
+.drop strong{
+  display:block;
+  font:700 16px/1.3 'Bricolage Grotesque',sans-serif;
+  color:var(--sage-deep);
+  margin-bottom:4px;
+}
+.drop em{display:block;font-style:normal;font-size:13px;color:var(--ink-soft)}
+.drop:has(input:focus-visible){outline:2px solid var(--sage);outline-offset:2px}
+#filelist{margin-top:10px;font-size:13px;color:var(--ink-soft);line-height:1.7}
+#filelist b{color:var(--ink);font-weight:600}
+#filesize.over{color:var(--flag);font-weight:600}
 
-        .invoice-meta {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px 40px;
-            margin-bottom: 40px;
-        }
-        
-        .meta-field {
-             display: flex;
-             flex-direction: column;
-        }
-
-        label {
-            font-weight: 600;
-            color: var(--secondary-color);
-            margin-bottom: 5px;
-            font-size: 12px;
-            text-transform: uppercase;
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            background-color: var(--input-bg);
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            box-sizing: border-box;
-            transition: border-color 0.2s;
-        }
-        
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.25);
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 80px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 30px;
-        }
-
-        th, td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        th {
-            background-color: var(--background-color);
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 12px;
-        }
-
-        td input[type="number"], td input[type="text"] {
-            border: none;
-            padding: 5px;
-            width: 95%;
-            background: transparent;
-        }
-         td input:focus {
-            background: #f0f8ff;
-            box-shadow: none;
-            border-radius: 2px;
-         }
-
-        .col-desc { width: 45%; }
-        .col-qty, .col-price { width: 15%; }
-        .col-total { width: 25%; }
-        
-        .add-row-btn {
-            background: none;
-            border: 1px dashed var(--primary-color);
-            color: var(--primary-color);
-            padding: 8px 12px;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-bottom: 30px;
-            font-weight: 500;
-        }
-        .add-row-btn:hover {
-            background: rgba(13, 110, 253, 0.1);
-        }
-
-
-        .totals-section {
-            display: flex;
-            justify-content: flex-end;
-        }
-        .totals-table {
-            width: 100%;
-            max-width: 300px;
-        }
-        .totals-table td {
-            border: none;
-            padding: 8px 15px;
-        }
-        .totals-table tr td:first-child {
-            font-weight: 600;
-            text-align: right;
-        }
-        .totals-table tr.grand-total td {
-            font-size: 1.2em;
-            font-weight: 700;
-            color: var(--primary-color);
-        }
-        #tax_rate {
-            width: 50px;
-            text-align: right;
-            border: none;
-            background: transparent;
-        }
-
-        .notes-signature {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 2px solid var(--border-color);
-        }
-        
-        .signature-box {
-             position: relative;
-        }
-
-        canvas {
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            cursor: crosshair;
-            touch-action: none;
-        }
-
-        .clear-sig-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: none;
-            border: none;
-            color: var(--secondary-color);
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .clear-sig-btn:hover { color: #dc3545; }
-        
-        .signature-placeholder {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: #ced4da;
-            pointer-events: none;
-            font-style: italic;
-        }
-
-        .actions {
-            margin-top: 40px;
-            text-align: center;
-        }
-        .print-btn {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 16px;
-            font-weight: 600;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-        .print-btn:hover {
-            background-color: #0b5ed7;
-        }
-
-        .footer-credit {
-            text-align: center;
-            margin-top: 30px;
-            font-size: 12px;
-            color: var(--secondary-color);
-        }
-        .footer-credit a {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-        .footer-credit a:hover {
-            text-decoration: underline;
-        }
-
-        .disclaimer {
-            font-size: 10px;
-            color: #999;
-            text-align: center;
-            margin-top: 20px;
-            padding: 0 20px;
-        }
-
-        @media print {
-            body {
-                background-color: #fff;
-                padding: 0;
-                font-size: 12px;
-            }
-            .invoice-container {
-                box-shadow: none;
-                margin: 0;
-                padding: 20px;
-                max-width: 100%;
-                border: none;
-            }
-            .actions, .add-row-btn, .clear-sig-btn, .footer-credit, .disclaimer {
-                display: none;
-            }
-            input, textarea {
-                border: none !important;
-                background: transparent !important;
-                box-shadow: none !important;
-                -webkit-print-color-adjust: exact;
-            }
-            .invoice-meta, .notes-signature {
-                grid-template-columns: 1fr;
-            }
-            .signature-box {
-                page-break-inside: avoid;
-            }
-        }
-    </style>
+/* ---------- actions ---------- */
+.send{
+  width:100%;min-height:56px;
+  font:700 17px/1 'Bricolage Grotesque',sans-serif;
+  letter-spacing:.01em;
+  color:#fff;background:var(--sage);
+  border:none;border-radius:9px;
+  cursor:pointer;
+  margin-top:6px;
+}
+.send:hover{background:var(--sage-deep)}
+.send:focus-visible{outline:3px solid var(--sage-deep);outline-offset:2px}
+.alt{
+  display:flex;align-items:center;justify-content:center;
+  min-height:52px;margin-top:10px;
+  font:600 15px/1 Inter,sans-serif;
+  color:var(--sage-deep);
+  background:transparent;
+  border:1px solid var(--sage);
+  border-radius:9px;
+  text-decoration:none;
+}
+.consent{font-size:12px;line-height:1.6;color:var(--ink-soft);margin-top:16px;text-align:center}
+.consent a{color:var(--sage-deep)}
+.reach{
+  font-size:14px;line-height:1.6;color:var(--ink-soft);
+  margin-top:18px;text-align:center;
+}
+.reach a{color:var(--sage-deep);font-weight:500;white-space:nowrap}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
 </head>
 <body>
 
-    <div class="invoice-container">
-        <header>
-            <div class="company-details">
-                <h1>EC Rental Property Management LLC</h1>
-                <input type="text" placeholder="123 Property Lane, Anytown, USA 12345">
-                <input type="email" placeholder="contact@ecrentalpm.com">
-                <input type="tel" placeholder="(555) 123-4567">
-            </div>
-            <div class="invoice-title">
-                <h2>INVOICE</h2>
-                <div class="meta-field" style="align-items: flex-end; margin-top: 10px;">
-                    <label for="invoice_id">Invoice #</label>
-                    <input type="text" id="invoice_id" value="0001" style="width: 100px; text-align: right; border:none; border-bottom: 1px dashed var(--border-color);">
-                </div>
-            </div>
-        </header>
+<header class="masthead">
+  <div class="wrap">
+    <p class="eyebrow">Now hiring · Fresno, CA</p>
+    <h1>Come take care of people with us.</h1>
+    <p>Fill this out on your phone in about two minutes. Attach your resume or certificates if you have them — if you don't, apply anyway. We train.</p>
+  </div>
+</header>
 
-        <main>
-            <div class="invoice-meta">
-                <div class="billed-to">
-                    <label for="client_name">Bill To</label>
-                    <input type="text" id="client_name" placeholder="Tenant Full Name">
-                    <textarea id="client_address" placeholder="Tenant Address"></textarea>
-                </div>
-                <div class="meta-details">
-                     <div class="meta-field">
-                        <label for="invoice_date">Date</label>
-                        <input type="date" id="invoice_date">
-                    </div>
-                     <div class="meta-field">
-                        <label for="due_date">Due Date</label>
-                        <input type="date" id="due_date">
-                    </div>
-                </div>
-            </div>
+<main class="wrap">
+<form action="https://formsubmit.co/contact@runp8.com" method="POST" enctype="multipart/form-data" id="app">
 
-            <table id="invoice_items">
-                <thead>
-                    <tr>
-                        <th class="col-desc">Item Description</th>
-                        <th class="col-qty">Qty</th>
-                        <th class="col-price">Unit Price</th>
-                        <th class="col-total">Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><input type="text" placeholder="e.g., Monthly Rent for Property X" value="Monthly Rent"></td>
-                        <td><input type="number" class="quantity" value="1" min="0"></td>
-                        <td><input type="number" class="price" placeholder="0.00" min="0"></td>
-                        <td class="line-total">$0.00</td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" placeholder="e.g., Late Fee"></td>
-                        <td><input type="number" class="quantity" value="0" min="0"></td>
-                        <td><input type="number" class="price" placeholder="0.00" min="0"></td>
-                        <td class="line-total">$0.00</td>
-                    </tr>
-                </tbody>
-            </table>
-            
-            <button class="add-row-btn" onclick="addRow()">+ Add Item</button>
+  <!-- FormSubmit settings -->
+  <input type="hidden" name="_subject" value="New caregiver application">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+  <!-- Optional: your own thank-you page. Delete this line to use FormSubmit's default. -->
+  <input type="hidden" name="_next" value="[https://YOURSITE.com/thanks]">
 
-            <div class="totals-section">
-                <table class="totals-table">
-                    <tbody>
-                        <tr>
-                            <td>Subtotal</td>
-                            <td id="subtotal">$0.00</td>
-                        </tr>
-                        <tr>
-                            <td>Tax (%) <input type="number" id="tax_rate" value="0" min="0"></td>
-                            <td id="tax_amount">$0.00</td>
-                        </tr>
-                        <tr class="grand-total">
-                            <td>Total Due</td>
-                            <td id="grand_total">$0.00</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+  <section class="sec">
+    <h2>About you</h2>
 
-            <div class="notes-signature">
-                <div class="notes">
-                    <label for="notes_text">Notes / Payment Instructions</label>
-                    <textarea id="notes_text" placeholder="e.g., Please make payment via Zelle to contact@ecrentalpm.com"></textarea>
-                </div>
-                <div class="signature-box">
-                    <label for="signature_pad">Signature</label>
-                    <div class="signature-placeholder">Sign Here</div>
-                    <canvas id="signature_pad" width="400" height="150"></canvas>
-                    <button class="clear-sig-btn" onclick="clearSignature()">Clear</button>
-                </div>
-            </div>
-
-        </main>
-        
-        <div class="actions">
-            <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
-        </div>
-
-        <p class="disclaimer">This document was generated by Fluentra AI for informational purposes. Consult a licensed attorney for legal advice.</p>
-        <p class="footer-credit">Built with <a href='https://fluentra-ai.lovable.app'>Fluentra AI</a></p>
+    <div class="field">
+      <label for="name">Full name <span class="req">*</span></label>
+      <input type="text" id="name" name="Name" autocomplete="name" required>
     </div>
 
-    <script>
-        // Set today's date
-        document.getElementById('invoice_date').valueAsDate = new Date();
+    <div class="two">
+      <div class="field">
+        <label for="phone">Cell phone <span class="req">*</span></label>
+        <input type="tel" id="phone" name="Phone" autocomplete="tel" inputmode="tel" required>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="Email" autocomplete="email" inputmode="email">
+      </div>
+    </div>
 
-        // --- CALCULATION LOGIC ---
-        const itemsTable = document.getElementById('invoice_items').querySelector('tbody');
-        const taxRateInput = document.getElementById('tax_rate');
+    <div class="field">
+      <label>Best way to reach you</label>
+      <div class="chips">
+        <label class="chip"><input type="radio" name="Contact method" value="Text" checked><span>Text</span></label>
+        <label class="chip"><input type="radio" name="Contact method" value="Call"><span>Call</span></label>
+        <label class="chip"><input type="radio" name="Contact method" value="Email"><span>Email</span></label>
+      </div>
+    </div>
 
-        function updateTotals() {
-            let subtotal = 0;
-            itemsTable.querySelectorAll('tr').forEach(row => {
-                const quantity = parseFloat(row.querySelector('.quantity').value) || 0;
-                const price = parseFloat(row.querySelector('.price').value) || 0;
-                const lineTotal = quantity * price;
-                row.querySelector('.line-total').textContent = '$' + lineTotal.toFixed(2);
-                subtotal += lineTotal;
-            });
+    <div class="field">
+      <label for="langs">Languages you speak</label>
+      <input type="text" id="langs" name="Languages" placeholder="English, Tagalog, Spanish, Hmong…">
+    </div>
+  </section>
 
-            const taxRate = parseFloat(taxRateInput.value) || 0;
-            const taxAmount = subtotal * (taxRate / 100);
-            const grandTotal = subtotal + taxAmount;
+  <section class="sec">
+    <h2>The job</h2>
 
-            document.getElementById('subtotal').textContent = '$' + subtotal.toFixed(2);
-            document.getElementById('tax_amount').textContent = '$' + taxAmount.toFixed(2);
-            document.getElementById('grand_total').textContent = '$' + grandTotal.toFixed(2);
-        }
+    <div class="field">
+      <label for="role">Position you want <span class="req">*</span></label>
+      <select id="role" name="Position" required>
+        <option value="">Choose one…</option>
+        <option>Caregiver</option>
+        <option>Med tech / med passer</option>
+        <option>Cook</option>
+        <option>Housekeeping / laundry</option>
+        <option>On-call / relief</option>
+      </select>
+    </div>
 
-        function addRow() {
-            const newRow = document.createElement('tr');
-            newRow.innerHTML = `
-                <td><input type="text" placeholder="New Item"></td>
-                <td><input type="number" class="quantity" value="1" min="0"></td>
-                <td><input type="number" class="price" placeholder="0.00" min="0"></td>
-                <td class="line-total">$0.00</td>
-            `;
-            itemsTable.appendChild(newRow);
-            attachRowListeners(newRow);
-            updateTotals();
-        }
+    <div class="two">
+      <div class="field">
+        <label for="hours">Hours wanted</label>
+        <select id="hours" name="Hours wanted">
+          <option>Full-time</option>
+          <option>Part-time</option>
+          <option>Either</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="start">Can start on</label>
+        <input type="date" id="start" name="Can start">
+      </div>
+    </div>
 
-        function attachRowListeners(row) {
-             row.querySelectorAll('.quantity, .price').forEach(input => {
-                input.addEventListener('input', updateTotals);
-            });
-        }
-        
-        itemsTable.querySelectorAll('tr').forEach(attachRowListeners);
-        taxRateInput.addEventListener('input', updateTotals);
-        
-        // --- SIGNATURE PAD LOGIC ---
-        const canvas = document.getElementById('signature_pad');
-        const placeholder = document.querySelector('.signature-placeholder');
-        const ctx = canvas.getContext('2d');
-        let isDrawing = false;
-        let lastX = 0;
-        let lastY = 0;
+    <div class="field">
+      <label for="exp">Caregiving experience</label>
+      <select id="exp" name="Experience">
+        <option>None yet — willing to learn</option>
+        <option>Less than 1 year</option>
+        <option>1–3 years</option>
+        <option>3–5 years</option>
+        <option>5+ years</option>
+      </select>
+    </div>
+  </section>
 
-        function getMousePos(canvas, evt) {
-            const rect = canvas.getBoundingClientRect();
-            return {
-                x: evt.clientX - rect.left,
-                y: evt.clientY - rect.top
-            };
-        }
-        function getTouchPos(canvas, touch) {
-             const rect = canvas.getBoundingClientRect();
-             return {
-                 x: touch.clientX - rect.left,
-                 y: touch.clientY - rect.top
-             };
-        }
+  <section class="sec">
+    <h2>When you can work</h2>
+    <p class="hint">Tap every shift you're open to. This is the part we look at first.</p>
 
-        function startDrawing(e) {
-            isDrawing = true;
-            placeholder.style.display = 'none';
-            const pos = e.type.includes('touch') ? getTouchPos(canvas, e.touches[0]) : getMousePos(canvas, e);
-            [lastX, lastY] = [pos.x, pos.y];
-            e.preventDefault();
-        }
+    <div class="grid">
+      <div></div>
+      <div class="head">AM</div>
+      <div class="head">PM</div>
+      <div class="head">NOC</div>
 
-        function draw(e) {
-            if (!isDrawing) return;
-            const pos = e.type.includes('touch') ? getTouchPos(canvas, e.touches[0]) : getMousePos(canvas, e);
-            ctx.beginPath();
-            ctx.moveTo(lastX, lastY);
-            ctx.lineTo(pos.x, pos.y);
-            ctx.strokeStyle = '#333';
-            ctx.lineWidth = 2;
-            ctx.lineCap = 'round';
-            ctx.lineJoin = 'round';
-            ctx.stroke();
-            [lastX, lastY] = [pos.x, pos.y];
-            e.preventDefault();
-        }
-        
-        function stopDrawing(e) {
-            isDrawing = false;
-            e.preventDefault();
-        }
-        
-        canvas.addEventListener('mousedown', startDrawing);
-        canvas.addEventListener('mousemove', draw);
-        canvas.addEventListener('mouseup', stopDrawing);
-        canvas.addEventListener('mouseout', stopDrawing);
-        
-        canvas.addEventListener('touchstart', startDrawing);
-        canvas.addEventListener('touchmove', draw);
-        canvas.addEventListener('touchend', stopDrawing);
+      <div class="day">Mon</div>
+      <label class="cell"><input type="checkbox" name="Availability" value="Mon AM" aria-label="Monday AM"><span></span></label>
+      <label class="cell"><input type="checkbox" name="Availability" value="Mon PM" aria-label="Monday PM"><span></span></label>
+      <label class="cell"><input type="checkbox" name="Availability" value="Mon NOC" aria-label="Monday NOC"><span></span></label>
 
-        function clearSignature() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            placeholder.style.display = 'block';
-        }
+      <div class="day">Tue</div>
+      <label class="cell"><input type="checkbox" name="Availability" value="Tue AM" aria-label="Tuesday AM"><span></span></label>
+      <label class="cell"><input type="checkbox" name="Availability" value="Tue PM" aria-label="Tuesday PM"><span></span></label>
+      <label class="cell"><input type="checkbox" name="Availability" value="Tue NOC" aria-label="Tuesday NOC"><span></span></label>
 
-        // Initialize calculations on load
-        window.onload = updateTotals;
-    </script>
+      <div class="day">Wed</div>
+      <label class="cell"><input type="checkbox" name="Availability" value="Wed AM" aria-label="Wednesday AM"><span></span></label>
+      <label class="cell"><input type="checkbox" name="Availability" value="Wed PM" aria-label="Wednesday PM"><span></span></label>
+      <label class="cell"><input type="checkbox" name="Availability" value="Wed NOC" aria-label="Wednesday NOC"><span></span></label>
+
+      <div class="day">Thu</div>
+      <label class="cell"><input type="checkbox" name="Availability" value="Thu AM" aria-label="Thursday AM"><span></span></label>
+      <label class="cell"><input type="checkbox" name="Availability" value="Thu PM" aria-label="Thursday PM"><span></span></label>
+      <label class="cell"><input type="checkbox" name="Availability" value="Thu NOC" aria-label="Thursday NOC"><span></span></label>
+
+      <div class="day">Fri</div>
+      <label class="cell"><input type="checkbox" name="Availability" value="Fri AM" aria-label="Friday AM"><span></span></label>
+      <label class="cell"><input type="checkbox" name="Availability" value="Fri PM" aria-label="Friday PM"><span></span></label>
+      <label class="cell"><input type="checkbox" name="Availability" value="Fri NOC" aria-label="Friday NOC"><span></span></label>
+
+      <div class="day">Sat</div>
+      <label class="cell"><input type="checkbox" name="Availability" value="Sat AM" aria-label="Saturday AM"><span></span></label>
+      <label class="cell"><input type="checkbox" name="Availability" value="Sat PM" aria-label="Saturday PM"><span></span></label>
+      <label class="cell"><input type="checkbox" name="Availability" value="Sat NOC" aria-label="Saturday NOC"><span></span></label>
+
+      <div class="day">Sun</div>
+      <label class="cell"><input type="checkbox" name="Availability" value="Sun AM" aria-label="Sunday AM"><span></span></label>
+      <label class="cell"><input type="checkbox" name="Availability" value="Sun PM" aria-label="Sunday PM"><span></span></label>
+      <label class="cell"><input type="checkbox" name="Availability" value="Sun NOC" aria-label="Sunday NOC"><span></span></label>
+    </div>
+    <p class="shiftkey">AM [6a–2p] · PM [2p–10p] · NOC [10p–6a]</p>
+  </section>
+
+  <section class="sec">
+    <h2>Clearances</h2>
+    <p class="hint">Tap what you already have. Missing some is fine — we'll walk you through it.</p>
+    <div class="chips">
+      <label class="chip"><input type="checkbox" name="Has" value="RCFE 40-hour"><span>RCFE 40-hour</span></label>
+      <label class="chip"><input type="checkbox" name="Has" value="CNA"><span>CNA</span></label>
+      <label class="chip"><input type="checkbox" name="Has" value="HHA"><span>HHA</span></label>
+      <label class="chip"><input type="checkbox" name="Has" value="CPR / First Aid"><span>CPR / First Aid</span></label>
+      <label class="chip"><input type="checkbox" name="Has" value="Food handler"><span>Food handler</span></label>
+      <label class="chip"><input type="checkbox" name="Has" value="Live Scan cleared"><span>Live Scan cleared</span></label>
+      <label class="chip"><input type="checkbox" name="Has" value="TB test current"><span>TB test current</span></label>
+      <label class="chip"><input type="checkbox" name="Has" value="Own transportation"><span>Own transportation</span></label>
+    </div>
+  </section>
+
+  <section class="sec">
+    <h2>Resume &amp; certificates</h2>
+
+    <label class="drop" id="drop">
+      <input type="file" id="files" name="attachment" multiple accept=".pdf,.doc,.docx,image/*">
+      <strong>Tap to attach</strong>
+      <em>Photos of your certificates work fine. PDF, Word, or pictures — 10 MB total.</em>
+    </label>
+    <div id="filelist"></div>
+
+    <div class="field" style="margin-top:18px">
+      <label for="note">Anything else we should know?</label>
+      <textarea id="note" name="Notes" placeholder="Tell us a little about yourself, or ask us a question."></textarea>
+    </div>
+  </section>
+
+  <button type="submit" class="send">Send my application</button>
+  <a class="alt" href="sms:+15598253038?&body=Hi%2C%20I'm%20interested%20in%20the%20caregiver%20job.%20My%20name%20is%3A%20">Text us instead</a>
+
+  <p class="reach">Questions? Text or call <a href="tel:+15598253038">559-825-3038</a> · <a href="mailto:contact@runp8.com">contact@runp8.com</a></p>
+
+  <p class="consent">By sending this you agree we may contact you by phone, text, or email about this job. <br>[FACILITY NAME] is an equal opportunity employer.</p>
+</form>
+</main>
+
+<script>
+(function(){
+  var input = document.getElementById('files');
+  var list  = document.getElementById('filelist');
+  var form  = document.getElementById('app');
+  var LIMIT = 10 * 1024 * 1024; // FormSubmit caps total attachments at 10 MB
+  var total = 0;
+
+  input.addEventListener('change', function(){
+    total = 0;
+    var rows = [];
+    for (var i = 0; i < input.files.length; i++) {
+      total += input.files[i].size;
+      rows.push('<b>' + input.files[i].name + '</b>');
+    }
+    if (!rows.length) { list.innerHTML = ''; return; }
+    var mb = (total / 1048576).toFixed(1);
+    var over = total > LIMIT;
+    list.innerHTML = rows.join('<br>') +
+      '<br><span id="filesize" class="' + (over ? 'over' : '') + '">' +
+      (over ? 'Too big — ' + mb + ' MB. Remove a file and try again.' : mb + ' MB total') +
+      '</span>';
+  });
+
+  form.addEventListener('submit', function(e){
+    if (total > LIMIT) {
+      e.preventDefault();
+      list.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+  });
+})();
+</script>
 </body>
 </html>
